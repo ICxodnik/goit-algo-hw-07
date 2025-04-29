@@ -56,6 +56,28 @@ def delete(root, key):
         root.right = delete(root.right, root.val)
     return root
 
+def max_value(root) -> Node:
+    if root is None:
+        return None
+    
+    if root.right:
+        return max_value(root.right)
+    return root.val
+
+def min_value(root) -> Node:
+    if root is None:
+        return None
+    
+    if root.left:
+        return min_value(root.left)
+    return root.val
+
+def sum_of_values(root) -> Node:
+    if root is None:
+        return 0
+    return root.val + sum_of_values(root.left) + sum_of_values(root.right)
+
+
 if __name__ == "__main__":
     # Test
     root = Node(5)
@@ -66,6 +88,8 @@ if __name__ == "__main__":
     root = insert(root, 6)
     root = insert(root, 8)
 
-    root = delete(root, 7)
+    print(f"max_value:{max_value(root)}")
+    print(f"min_value:{min_value(root)}")
+    print(f"sum_of_values:{sum_of_values(root)}")
     print(root)
 
