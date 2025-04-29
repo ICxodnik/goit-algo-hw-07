@@ -131,7 +131,7 @@ def delete_node(root, key):
 
 def max_value(root: AVLNode) -> int:
     if root is None:
-        return None
+        raise ValueError("Tree is empty")
     
     if root.right:
         return max_value(root.right)
@@ -139,7 +139,7 @@ def max_value(root: AVLNode) -> int:
 
 def min_value(root: AVLNode) -> int:
     if root is None:
-        return None
+        raise ValueError("Tree is empty")
     
     if root.left:
         return min_value(root.left)
@@ -147,7 +147,8 @@ def min_value(root: AVLNode) -> int:
 
 def sum_of_values(root: AVLNode) -> int:
     if root is None:
-        return 0
+        raise ValueError("Tree is empty")
+
     return root.key + sum_of_values(root.left) + sum_of_values(root.right)
 
 
