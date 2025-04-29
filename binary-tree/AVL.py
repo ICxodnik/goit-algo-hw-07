@@ -129,6 +129,28 @@ def delete_node(root, key):
 
     return root
 
+def max_value(root: AVLNode) -> int:
+    if root is None:
+        return None
+    
+    if root.right:
+        return max_value(root.right)
+    return root.key
+
+def min_value(root: AVLNode) -> int:
+    if root is None:
+        return None
+    
+    if root.left:
+        return min_value(root.left)
+    return root.key
+
+def sum_of_values(root: AVLNode) -> int:
+    if root is None:
+        return 0
+    return root.key + sum_of_values(root.left) + sum_of_values(root.right)
+
+
 if __name__ == "__main__":
     # Driver program to test the above functions
     root = None
@@ -140,10 +162,6 @@ if __name__ == "__main__":
         print("AVL-Дерево:")
         print(root)
 
-    # Delete
-    keys_to_delete = [10, 27]
-    for key in keys_to_delete:
-        root = delete_node(root, key)
-        print("Видалено:", key)
-        print("AVL-Дерево:")
-        print(root)
+    print(f"max_value:{max_value(root)}")
+    print(f"min_value:{min_value(root)}")
+    print(f"sum_of_values:{sum_of_values(root)}")
